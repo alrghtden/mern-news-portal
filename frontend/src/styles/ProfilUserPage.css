@@ -1,0 +1,70 @@
+.profil-user-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profil-user-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profil-user-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profil-user-foto {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 2px solid #ccc;
+}
+
+.profil-user-subtitle {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.profil-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profil-user-form input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+}
+
+.profil-user-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profil-user-form button:hover {
+  background-color: #0056b3;
+}
+
+.profil-user-message {
+  text-align: center;
+  margin-top: 15px;
+  color: green;
+  font-weight: bold;
+}

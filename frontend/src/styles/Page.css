@@ -1,0 +1,95 @@
+.home-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tambah-berita {
+  text-align: right;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+}
+
+.tambah-berita a {
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.no-news {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+.tabel-berita {
+  width: 1200px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.tabel-berita th,
+.tabel-berita td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.tabel-berita th {
+  background-color: #f5f5f5;
+}
+
+.gambar-berita {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.ringkasan-isi {
+  color: #444;
+  line-height: 1.5;
+  max-height: 6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-aksi button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-edit {
+  text-decoration: none;
+}
+
+.txt-edit {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+}

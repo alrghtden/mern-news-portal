@@ -1,0 +1,58 @@
+.tambah-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.tambah-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tambah-form label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.tambah-form input[type="text"],
+.tambah-form input[type="email"],
+.tambah-form input[type="password"],
+.tambah-form select,
+.tambah-form textarea,
+.tambah-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.tambah-form textarea {
+  resize: vertical;
+  min-height: 1000px;
+}
+
+.tambah-form button {
+  width: 100%;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tambah-form button:hover {
+  background-color: #125ea2;
+}
