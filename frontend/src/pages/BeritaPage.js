@@ -12,7 +12,7 @@ const BeritaPage = () => {
 
   const fetchBerita = async () => {
     try {
-      const response = await axios.get('/api/berita');
+      const response = await axios.get('https://mern-news-portal-xi.vercel.app/api/berita');
       setBeritaList(response.data);
     } catch (error) {
       console.error('Gagal mengambil data berita:', error);

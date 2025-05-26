@@ -19,7 +19,7 @@ const TambahBerita = () => {
     if (gambar) formData.append('gambar', gambar);
 
     try {
-      await axios.post('/api/berita', formData, {
+      await axios.post('http://localhost:5000/api/berita', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate('/admin/berita');
