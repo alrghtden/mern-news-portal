@@ -21,7 +21,7 @@ const AuthPage = () => {
     const url = isRegister ? `/api/auth/register` : `/api/auth/login`;
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}${url}`, {
+      const res = await fetch(`${process.env.RAILWAY_URL}${url}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -36,7 +36,7 @@ const AuthPage = () => {
 
       localStorage.setItem('token', data.token);
 
-      const userRes = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/me`, {
+      const userRes = await fetch(`${process.env.RAILWAY_URL}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${data.token}`
         }

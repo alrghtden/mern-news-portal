@@ -17,16 +17,16 @@ const DetailBeritaPage = () => {
 
   const fetchData = async () => {
     try {
-      const beritaRes = await fetch(`${process.env.REACT_APP_API_URL}/api/berita/${id}`);
+      const beritaRes = await fetch(`${process.env.RAILWAY_URL}/api/berita/${id}`);
       const beritaData = await beritaRes.json();
       setBerita(beritaData);
 
-      const komentarRes = await fetch(`${process.env.REACT_APP_API_URL}/api/komentar/berita/${id}`);
+      const komentarRes = await fetch(`${process.env.RAILWAY_URL}/api/komentar/berita/${id}`);
       const komentarData = await komentarRes.json();
       setKomentar(komentarData);
 
       if (token) {
-        const userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/me`, {
+        const userRes = await axios.get(`${process.env.RAILWAY_URL}/api/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(userRes.data);
@@ -64,7 +64,7 @@ const DetailBeritaPage = () => {
 
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/komentar`,
+        `${process.env.RAILWAY_URL}/api/komentar`,
         { isi: isiKomentar, beritaId: id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -83,7 +83,7 @@ const DetailBeritaPage = () => {
     if (!window.confirm('Yakin ingin menghapus komentar ini?')) return;
 
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/komentar/${komentarId}`, {
+      await axios.delete(`${process.env.RAILWAY_URL}/api/komentar/${komentarId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage('Komentar berhasil dihapus');

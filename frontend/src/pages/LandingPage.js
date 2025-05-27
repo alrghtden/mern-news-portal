@@ -7,7 +7,7 @@ const LandingPage = ({ searchQuery }) => {
   const [berita, setBerita] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/berita`)
+    fetch(`${process.env.RAILWAY_URL}/api/berita`)
       .then((res) => res.json())
       .then((data) => setBerita(data))
       .catch((err) => console.error('Gagal mengambil berita:', err));

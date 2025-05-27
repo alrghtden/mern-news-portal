@@ -19,7 +19,7 @@ const TambahBerita = () => {
     if (gambar) formData.append('gambar', gambar);
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/berita`, formData, {
+      await axios.post(`${process.env.RAILWAY_URL}/api/berita`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate('/admin/berita');
