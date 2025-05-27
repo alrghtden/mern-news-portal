@@ -8,7 +8,7 @@ const KategoriPage = ({ searchQuery }) => {
   const [berita, setBerita] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/berita')
+    fetch(`${process.env.REACT_APP_API_URL}/api/berita`)
       .then((res) => res.json())
       .then((data) => {
         const filtered = data.filter(
