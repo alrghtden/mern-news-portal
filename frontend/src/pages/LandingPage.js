@@ -29,11 +29,15 @@ const LandingPage = ({ searchQuery }) => {
           <h1>Berita Utama Hari Ini</h1>
           <Link to={`/news/${berita[0]._id}`} className="headline-link">
             <article>
-              <img
-                src={`/uploads/${berita[0].gambar}`}
-                alt={berita[0].judul || 'Berita'}
-              />
-              <div className='title'>
+              {/* Gunakan URL penuh dari UploadThing */}
+              {berita[0].gambar && (
+                <img
+                  src={berita[0].gambar}
+                  alt={berita[0].judul || 'Berita'}
+                  style={{ maxWidth: '100%', objectFit: 'cover' }}
+                />
+              )}
+              <div className="title">
                 <h2>{berita[0].judul}</h2>
                 <p>{berita[0].isi.substring(0, 100)}...</p>
               </div>

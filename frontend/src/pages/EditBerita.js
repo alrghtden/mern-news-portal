@@ -19,7 +19,7 @@ const EditBerita = () => {
 
   const fetchBerita = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/berita/${id}`);
+      const response = await axios.get(`${process.env.RAILWAY_URL}/api/berita/${id}`);
       setJudul(response.data.judul);
       setIsi(response.data.isi);
     } catch (error) {
@@ -36,7 +36,7 @@ const EditBerita = () => {
     if (gambar) formData.append('gambar', gambar);
 
     try {
-      await axios.put(`${process.env.REACT_APP_API_URL}/api/berita/${id}`, formData, {
+      await axios.put(`${process.env.RAILWAY_URL}/api/berita/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate('/admin/berita');
