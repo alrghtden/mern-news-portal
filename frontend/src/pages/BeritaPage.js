@@ -22,7 +22,7 @@ const BeritaPage = () => {
   const deleteBerita = async (id) => {
     if (window.confirm('Yakin ingin menghapus berita ini?')) {
       try {
-        await axios.delete(`/api/berita/${id}`);
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/berita/${id}`);
         fetchBerita();
       } catch (error) {
         console.error('Gagal menghapus berita:', error);

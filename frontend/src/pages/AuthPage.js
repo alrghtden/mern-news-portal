@@ -18,7 +18,7 @@ const AuthPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = isRegister ? '/api/auth/register' : '/api/auth/login';
+    const url = isRegister ? `${process.env.REACT_APP_API_URL}/api/auth/register` : `${process.env.REACT_APP_API_URL}/api/auth/login`;
 
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}${url}`, {

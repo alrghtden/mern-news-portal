@@ -18,7 +18,7 @@ const EditUser = () => {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get(`/api/user/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${id}`);
       const { nama, email, role } = res.data;
       setNama(nama);
       setEmail(email);
@@ -38,7 +38,7 @@ const EditUser = () => {
     if (foto) formData.append('foto', foto);
 
     try {
-      await axios.put(`/api/user/${id}`, formData, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/user/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate('/admin/user');
