@@ -12,7 +12,7 @@ const BeritaPage = () => {
 
   const fetchBerita = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/berita`);
       setBeritaList(response.data);
     } catch (error) {
       console.error('Gagal mengambil data berita:', error);
