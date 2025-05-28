@@ -12,7 +12,7 @@ const UserPage = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`${process.env.RAILWAY_URL}/api/user`);
+      const response = await axios.get(`${process.env.REACT_APP_RAILWAY_URL}/api/user`);
       setUserList(response.data);
     } catch (error) {
       console.error('Gagal mengambil data user:', error);
@@ -22,7 +22,7 @@ const UserPage = () => {
   const deleteUser = async (id) => {
     if (window.confirm('Yakin ingin menghapus user ini?')) {
       try {
-        await axios.delete(`${process.env.RAILWAY_URL}/api/user/${id}`);
+        await axios.delete(`${process.env.REACT_APP_RAILWAY_URL}/api/user/${id}`);
         fetchUsers();
       } catch (error) {
         console.error('Gagal menghapus user:', error);

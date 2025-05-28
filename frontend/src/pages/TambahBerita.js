@@ -20,7 +20,7 @@ const TambahBerita = () => {
     e.preventDefault();
 
     try {
-      await axios.post(`${process.env.RAILWAY_URL}/api/berita`, {
+      await axios.post(`${process.env.REACT_APP_RAILWAY_URL}/api/berita`, {
         judul,
         isi,
         kategori,

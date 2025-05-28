@@ -12,7 +12,7 @@ const BeritaPage = () => {
 
   const fetchBerita = async () => {
     try {
-      const response = await axios.get(`${process.env.RAILWAY_URL}/api/berita`);
+      const response = await axios.get(`${process.env.REACT_APP_RAILWAY_URL}/api/berita`);
       setBeritaList(response.data);
     } catch (error) {
       console.error('Gagal mengambil data berita:', error);
@@ -22,7 +22,7 @@ const BeritaPage = () => {
   const deleteBerita = async (id) => {
     if (window.confirm('Yakin ingin menghapus berita ini?')) {
       try {
-        await axios.delete(`${process.env.RAILWAY_URL}/api/berita/${id}`);
+        await axios.delete(`${process.env.REACT_APP_RAILWAY_URL}/api/berita/${id}`);
         fetchBerita();
       } catch (error) {
         console.error('Gagal menghapus berita:', error);

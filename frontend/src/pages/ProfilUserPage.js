@@ -50,7 +50,7 @@ const ProfilUserPage = () => {
     if (formData.foto) form.append('foto', formData.foto);
 
     try {
-      await axios.put(`${process.env.RAILWAY_URL}/api/user/${userId}`, form, {
+      await axios.put(`${process.env.REACT_APP_RAILWAY_URL}/api/user/${userId}`, form, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

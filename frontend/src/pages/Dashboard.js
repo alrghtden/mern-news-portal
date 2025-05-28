@@ -13,10 +13,10 @@ const Dashboard = () => {
 
   const fetchData = async () => {
     try {
-      const beritaRes = await axios.get(`${process.env.RAILWAY_URL}/api/berita`);
+      const beritaRes = await axios.get(`${process.env.REACT_APP_RAILWAY_URL}/api/berita`);
       setJumlahBerita(beritaRes.data.length);
 
-      const userRes = await axios.get(`${process.env.RAILWAY_URL}/api/user`);
+      const userRes = await axios.get(`${process.env.REACT_APP_RAILWAY_URL}/api/user`);
       setJumlahUser(userRes.data.length);
     } catch (error) {
       console.error('Gagal mengambil data:', error);
