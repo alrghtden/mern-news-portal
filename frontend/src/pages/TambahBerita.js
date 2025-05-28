@@ -5,7 +5,7 @@ import { generateUploadButton } from '@uploadthing/react';
 import '../styles/Add.css';
 
 const UploadButton = generateUploadButton({
-  url: 'https://mern-news-portal-backend-production.up.railway.app/api/uploadthing', // Ganti dengan URL backend kamu
+  url: `${process.env.REACT_APP_RAILWAY_URL}/api/uploadthing`,
 });
 
 const TambahBerita = () => {
