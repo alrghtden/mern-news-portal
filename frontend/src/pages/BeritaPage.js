@@ -32,15 +32,16 @@ const BeritaPage = () => {
 
   return (
     <div className="home-container">
+
       <div className="tambah-berita">
         <h2>Daftar Berita</h2>
         <Link to="/admin/add-berita">+ Tambah Berita</Link>
       </div>
 
       {beritaList.length === 0 ? (
-        <p className="no-news">Belum ada berita.</p>
-      ) : (
-        <table className="tabel-berita">
+          <p className="no-news">Belum ada berita.</p>
+        ) : (
+            <table className="tabel-berita">
           <thead>
             <tr>
               <th>Gambar</th>
@@ -56,10 +57,9 @@ const BeritaPage = () => {
                 <td>
                   {berita.gambar && (
                     <img
-                      src={berita.gambar}  // <-- gunakan URL penuh dari UploadThing
+                      src={`/uploads/${berita.gambar}`}
                       alt={berita.judul}
                       className="gambar-berita"
-                      style={{ maxWidth: '150px', maxHeight: '100px', objectFit: 'cover' }}
                     />
                   )}
                 </td>
@@ -77,13 +77,11 @@ const BeritaPage = () => {
                 </td>
                 <td>{berita.kategori}</td>
                 <td>
-                  <div className="btn-aksi">
-                    <Link to={`/admin/edit-berita/${berita._id}`} className="btn-edit">
-                      <button className="txt-edit">Edit</button>
+                  <div className="btn-aksi"> 
+                    <Link to={`/admin/edit-berita/${berita._id}`} className='btn-edit'>
+                      <button className='txt-edit'>Edit</button>
                     </Link>
-                    <button onClick={() => deleteBerita(berita._id)} className="btn-delete">
-                      Delete
-                    </button>
+                    <button onClick={() => deleteBerita(berita._id)} className="btn-delete">Delete</button>
                   </div>
                 </td>
               </tr>

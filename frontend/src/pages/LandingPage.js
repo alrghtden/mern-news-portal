@@ -7,7 +7,7 @@ const LandingPage = ({ searchQuery }) => {
   const [berita, setBerita] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_RAILWAY_URL}/api/berita`)
+    fetch(${process.env.RAILWAY_URL}/api/berita)
       .then((res) => res.json())
       .then((data) => setBerita(data))
       .catch((err) => console.error('Gagal mengambil berita:', err));
@@ -27,17 +27,13 @@ const LandingPage = ({ searchQuery }) => {
       {showHeadline && (
         <section className="headline-news">
           <h1>Berita Utama Hari Ini</h1>
-          <Link to={`/news/${berita[0]._id}`} className="headline-link">
+          <Link to={/news/${berita[0]._id}} className="headline-link">
             <article>
-              {/* Gunakan URL penuh dari UploadThing */}
-              {berita[0].gambar && (
-                <img
-                  src={berita[0].gambar}
-                  alt={berita[0].judul || 'Berita'}
-                  style={{ maxWidth: '100%', objectFit: 'cover' }}
-                />
-              )}
-              <div className="title">
+              <img
+                src={/uploads/${berita[0].gambar}}
+                alt={berita[0].judul || 'Berita'}
+              />
+              <div className='title'>
                 <h2>{berita[0].judul}</h2>
                 <p>{berita[0].isi.substring(0, 100)}...</p>
               </div>
