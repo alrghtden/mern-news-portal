@@ -27,10 +27,10 @@ const LandingPage = ({ searchQuery }) => {
       {showHeadline && (
         <section className="headline-news">
           <h1>Berita Utama Hari Ini</h1>
-          <Link to={/news/${berita[0]._id}} className="headline-link">
+          <Link to={`/news/${berita[0]._id}`} className="headline-link">
             <article>
               <img
-                src={/uploads/${berita[0].gambar}}
+                src={`/uploads/${berita[0].gambar}`}
                 alt={berita[0].judul || 'Berita'}
               />
               <div className='title'>
