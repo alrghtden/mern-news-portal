@@ -38,7 +38,6 @@ const AppContent = () => {
           <Route path="/kategori/:kategori" element={<KategoriPage searchQuery={searchQuery} />} />
           <Route path="/news/:id" element={<DetailBeritaPage />} />
           <Route path="/login" element={<AuthPage />} />
-          <Route path="/test" element={<Test />} />
 
           <Route element={<PrivateRoute />}>
             <Route path="/profil" element={<ProfilUserPage />} />
