@@ -22,6 +22,7 @@ const EditBerita = () => {
       const response = await axios.get(`${process.env.REACT_APP_RAILWAY_URL}/api/berita/${id}`);
       setJudul(response.data.judul);
       setIsi(response.data.isi);
+      setKategori(response.data.kategori);
     } catch (error) {
       console.error('Gagal mengambil data berita:', error);
     }
