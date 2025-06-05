@@ -17,7 +17,6 @@ import KategoriPage from './pages/KategoriPage';
 import DetailBeritaPage from './pages/DetailBeritaPage';
 import AuthPage from './pages/AuthPage';
 import ProfilUserPage from './pages/ProfilUserPage';
-import Test from './pages/Test';
 
 const AppContent = () => {
   const location = useLocation();
