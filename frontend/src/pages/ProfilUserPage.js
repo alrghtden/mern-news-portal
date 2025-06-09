@@ -20,6 +20,7 @@ const ProfilUserPage = () => {
   const [userId, setUserId] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isEditing, setIsEditing] = useState(false); // <- Tambahan penting
 
   const token = localStorage.getItem('token');
 
@@ -68,7 +69,6 @@ const ProfilUserPage = () => {
         },
       });
 
-      // Perbarui data tampilan user setelah berhasil update
       const updatedUser = res.data;
       setUserProfile({
         nama: updatedUser.nama,
@@ -79,6 +79,7 @@ const ProfilUserPage = () => {
       setFormData((prev) => ({ ...prev, password: '', foto: null }));
       setPreviewFoto(updatedUser.foto ? `/uploads/${updatedUser.foto}` : '');
       setMessage('Profil berhasil diperbarui');
+      setIsEditing(false); // Sembunyikan form setelah update
     } catch (err) {
       console.error(err);
       setMessage('Gagal memperbarui profil');
@@ -101,16 +102,47 @@ const ProfilUserPage = () => {
             />
             <p><strong>Nama:</strong> {userProfile.nama}</p>
             <p><strong>Email:</strong> {userProfile.email}</p>
+            <button onClick={() => setIsEditing(!isEditing)}>
+              {isEditing ? 'Batal Edit' : 'Edit Profil'}
+            </button>
           </div>
 
-          <h3 className="profil-user-subtitle">Edit Profil</h3>
-          <form onSubmit={handleSubmit} className="profil-user-form" encType="multipart/form-data">
-            <input type="text" name="nama" value={formData.nama} onChange={handleChange} placeholder="Nama" required />
-            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-            <input type="password" name="password" onChange={handleChange} placeholder="Password baru (opsional)" />
-            <input type="file" name="foto" onChange={handleChange} accept="image/*" />
-            <button type="submit">Simpan Perubahan</button>
-          </form>
+          {isEditing && (
+            <>
+              <h3 className="profil-user-subtitle">Edit Profil</h3>
+              <form onSubmit={handleSubmit} className="profil-user-form" encType="multipart/form-data">
+                <input
+                  type="text"
+                  name="nama"
+                  value={formData.nama}
+                  onChange={handleChange}
+                  placeholder="Nama"
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  placeholder="Password baru (opsional)"
+                />
+                <input
+                  type="file"
+                  name="foto"
+                  onChange={handleChange}
+                  accept="image/*"
+                />
+                <button type="submit">Simpan Perubahan</button>
+              </form>
+            </>
+          )}
           {message && <p className="profil-user-message">{message}</p>}
         </>
       )}
