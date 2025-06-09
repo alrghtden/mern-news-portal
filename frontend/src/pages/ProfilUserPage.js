@@ -26,7 +26,7 @@ const ProfilUserPage = () => {
 
   useEffect(() => {
     axios
-      .get('/api/auth/me', {
+      .get(`${process.env.REACT_APP_RAILWAY_URL}/api/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
