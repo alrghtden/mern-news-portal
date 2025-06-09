@@ -30,6 +30,7 @@ const ProfilUserPage = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
+        console.log('Data user dari API:', res.data);
         const { _id, nama, email, foto } = res.data;
         setUserId(_id);
         setUserProfile({ nama, email, foto });
