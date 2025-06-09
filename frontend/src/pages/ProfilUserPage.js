@@ -3,16 +3,23 @@ import axios from 'axios';
 import '../styles/ProfilUserPage.css';
 
 const ProfilUserPage = () => {
+  const [userProfile, setUserProfile] = useState({
+    nama: '',
+    email: '',
+    foto: '',
+  });
+
   const [formData, setFormData] = useState({
     nama: '',
     email: '',
     password: '',
     foto: null,
   });
+
   const [previewFoto, setPreviewFoto] = useState('');
   const [userId, setUserId] = useState('');
   const [message, setMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // <- TAMBAHKAN INI
+  const [isLoading, setIsLoading] = useState(true);
 
   const token = localStorage.getItem('token');
 
@@ -23,10 +30,11 @@ const ProfilUserPage = () => {
       })
       .then((res) => {
         const { _id, nama, email, foto } = res.data;
-        setFormData({ nama, email, password: '', foto: null });
         setUserId(_id);
+        setUserProfile({ nama, email, foto });
+        setFormData({ nama, email, password: '', foto: null });
         setPreviewFoto(foto ? `/uploads/${foto}` : '');
-        setIsLoading(false); // <- DATA SELESAI DIMUAT
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error('Gagal mengambil data user:', err);
@@ -53,12 +61,23 @@ const ProfilUserPage = () => {
     if (formData.foto) form.append('foto', formData.foto);
 
     try {
-      await axios.put(`${process.env.REACT_APP_RAILWAY_URL}/api/user/${userId}`, form, {
+      const res = await axios.put(`${process.env.REACT_APP_RAILWAY_URL}/api/user/${userId}`, form, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
+
+      // Perbarui data tampilan user setelah berhasil update
+      const updatedUser = res.data;
+      setUserProfile({
+        nama: updatedUser.nama,
+        email: updatedUser.email,
+        foto: updatedUser.foto,
+      });
+
+      setFormData((prev) => ({ ...prev, password: '', foto: null }));
+      setPreviewFoto(updatedUser.foto ? `/uploads/${updatedUser.foto}` : '');
       setMessage('Profil berhasil diperbarui');
     } catch (err) {
       console.error(err);
@@ -80,8 +99,8 @@ const ProfilUserPage = () => {
               alt="Foto Profil"
               className="profil-user-foto"
             />
-            <p><strong>Nama:</strong> {formData.nama}</p>
-            <p><strong>Email:</strong> {formData.email}</p>
+            <p><strong>Nama:</strong> {userProfile.nama}</p>
+            <p><strong>Email:</strong> {userProfile.email}</p>
           </div>
 
           <h3 className="profil-user-subtitle">Edit Profil</h3>
