@@ -20,7 +20,7 @@ const ProfilUserPage = () => {
   const [userId, setUserId] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [isEditing, setIsEditing] = useState(false); // <- Tambahan penting
+  const [isEditing, setIsEditing] = useState(false);
 
   const token = localStorage.getItem('token');
 
@@ -63,24 +63,24 @@ const ProfilUserPage = () => {
     if (formData.foto) form.append('foto', formData.foto);
 
     try {
-      const res = await axios.put(`${process.env.REACT_APP_RAILWAY_URL}/api/user/${userId}`, form, {
+      await axios.put(`${process.env.REACT_APP_RAILWAY_URL}/api/user/${userId}`, form, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
 
-      const updatedUser = res.data;
-      setUserProfile({
-        nama: updatedUser.nama,
-        email: updatedUser.email,
-        foto: updatedUser.foto,
+      const res = await axios.get(`${process.env.REACT_APP_RAILWAY_URL}/api/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
       });
 
-      setFormData((prev) => ({ ...prev, password: '', foto: null }));
-      setPreviewFoto(updatedUser.foto ? `/uploads/${updatedUser.foto}` : '');
+      const { nama, email, foto } = res.data;
+      setUserProfile({ nama, email, foto });
+      setFormData({ nama, email, password: '', foto: null });
+      setPreviewFoto(foto ? `/uploads/${foto}` : '');
+
       setMessage('Profil berhasil diperbarui');
-      setIsEditing(false); // Sembunyikan form setelah update
+      setIsEditing(false);
     } catch (err) {
       console.error(err);
       setMessage('Gagal memperbarui profil');
